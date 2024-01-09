@@ -34,7 +34,7 @@ class ProjectController extends Controller
 
         $new_project = Project::create($data);
 
-        return redirect()->route('admin.project.show', $new_project->id);
+        return redirect()->route('admin.projects.show', $new_project->id);
     }
 
     /**
@@ -58,9 +58,18 @@ class ProjectController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
-        //
+        $validatedData = $request->validate([
+            'img' => 'required|string|max:255',
+            'title' => 'required|string|max:255',
+            'description' => 'required|string|min:5|max:400',
+        ]);
+
+        $project = Project::findOrFail($id);
+        $project->update($validatedData);
+
+        return redirect()->route('admin.projects.show', $id);
     }
 
     /**

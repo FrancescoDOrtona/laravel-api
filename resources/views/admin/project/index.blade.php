@@ -19,7 +19,7 @@
                             <h5 class="card-title">{{ $project->title }}</h5>
                         </a>
                         <p class="card-text">{{ $project->description }}</p>
-                        <a href="#" class="btn btn-primary">Edit</a>
+                        <a href="{{ route('admin.projects.edit' , $project->id) }}" class="btn btn-primary">Edit</a>
                         <a href="#" class="btn btn-danger">Delete</a>
                     </div>
                     </div>
