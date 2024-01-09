@@ -22,7 +22,7 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.project.create');
     }
 
     /**
@@ -30,7 +30,11 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+
+        $new_project = Project::create($data);
+
+        return redirect()->route('admin.project.show', $new_project->id);
     }
 
     /**
@@ -45,9 +49,10 @@ class ProjectController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($id)
     {
-        //
+        $project = Project::findOrFail($id);
+        return view('admin.project.edit', compact('project'));
     }
 
     /**

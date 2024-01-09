@@ -8,7 +8,7 @@
         </div>
     </section>
 
-    <section>
+    <section class="pb-4">
         <div class="container">
             <div class="d-grid" style="grid-template-columns: repeat(3,1fr); gap: 20px;">
                 @forelse ($projects as $project)

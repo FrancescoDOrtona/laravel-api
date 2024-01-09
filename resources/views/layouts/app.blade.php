@@ -49,7 +49,11 @@
                         @auth
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('admin.projects.index')}}">Projects</a>
-                        </li>                           
+                        </li>
+                        
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('admin.projects.create')}}">Create New Project</a>
+                        </li>
                         @endauth
                     </ul>
 
