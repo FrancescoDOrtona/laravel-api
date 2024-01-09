@@ -15,12 +15,15 @@
             <input class="form-control" id="title" name="title" placeholder="Title" type="text">
         </div>
 
-        <select class="form-select mb-3" name="type_id">
-            <option selected>Select type</option>
-            @foreach($types as $type)
-                <option value="{{ $type->id }}">{{ $type->name }}</option>
-            @endforeach
-        </select>
+        <div class="mb-3">
+            <label for="type_id" class="form-label">Types</label>
+            <select class="form-select" name="type_id">
+                <option selected>Select type</option>
+                @foreach($types as $type)
+                    <option value="{{ $type->id }}">{{ $type->name }}</option>
+                @endforeach
+            </select>
+        </div>
     
         <div class="mb-3">
             <label for="description" class="form-label">Description</label>
