@@ -18,6 +18,11 @@
                             <a href="{{ route('admin.projects.show', $project->id) }}">
                                 <h5 class="card-title">{{ $project->title }}</h5>
                             </a>
+                            @if($project->type)
+                            <p>Type: {{ $project->type->name }}</p>
+                            @else
+                                <p>-</p>
+                            @endif
                             <p class="card-text">{{ $project->description }}</p>
 
                             <div class="d-flex gap-2">

@@ -9,6 +9,11 @@
                 </div>
                 <div class="col-8">
                     <h2>{{ $project->title }}</h2>
+                    @if($project->type)
+                        <p>{{ $project->type->name }}</p>
+                    @else
+                        <p>-</p>
+                    @endif
                     <p>{{ $project->description }}</p>
                     <div class="d-flex gap-2">
                         <a href="{{ route('admin.projects.edit' , $project->id) }}" class="btn btn-primary">Edit</a>
