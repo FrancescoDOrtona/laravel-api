@@ -15,7 +15,9 @@
                     <div class="card">
                         <img src="{{ $project->img}}" class="card-img-top" alt="...">
                     <div class="card-body">
-                        <h5 class="card-title">{{ $project->title }}</h5>
+                        <a href="{{ route('admin.projects.show', $project->id) }}">
+                            <h5 class="card-title">{{ $project->title }}</h5>
+                        </a>
                         <p class="card-text">{{ $project->description }}</p>
                         <a href="#" class="btn btn-primary">Edit</a>
                         <a href="#" class="btn btn-danger">Delete</a>
