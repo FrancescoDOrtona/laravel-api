@@ -14,14 +14,22 @@
                 @forelse ($projects as $project)
                     <div class="card">
                         <img src="{{ $project->img}}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <a href="{{ route('admin.projects.show', $project->id) }}">
-                            <h5 class="card-title">{{ $project->title }}</h5>
-                        </a>
-                        <p class="card-text">{{ $project->description }}</p>
-                        <a href="{{ route('admin.projects.edit' , $project->id) }}" class="btn btn-primary">Edit</a>
-                        <a href="#" class="btn btn-danger">Delete</a>
-                    </div>
+                        <div class="card-body">
+                            <a href="{{ route('admin.projects.show', $project->id) }}">
+                                <h5 class="card-title">{{ $project->title }}</h5>
+                            </a>
+                            <p class="card-text">{{ $project->description }}</p>
+
+                            <div class="d-flex gap-2">
+                                <a href="{{ route('admin.projects.edit' , $project->id) }}" class="btn btn-primary">Edit</a>
+                            <form  action="{{route('admin.projects.destroy', $project->id)}}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button class="btn btn-danger">Delete</button>
+                            </form> 
+                            </div>
+                            
+                        </div>
                     </div>
                 @empty
                     No Projects to display
