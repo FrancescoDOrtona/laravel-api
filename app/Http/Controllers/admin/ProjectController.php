@@ -32,6 +32,13 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'img' => 'required|max:255|string',
+            'title' => 'required|min:3|string',
+            'type_id' => 'nullable|exists:types,id',
+            'description' => 'required|min:5|max:400|string'
+        ]);
+
         $data = $request->all();
 
         $new_project = Project::create($data);
@@ -66,6 +73,7 @@ class ProjectController extends Controller
         $validatedData = $request->validate([
             'img' => 'required|string|max:255',
             'title' => 'required|string|max:255',
+            'type_id' => 'nullable|exists:types,id',
             'description' => 'required|string|min:5|max:400',
         ]);
 
