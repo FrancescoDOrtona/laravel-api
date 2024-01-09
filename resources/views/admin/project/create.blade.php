@@ -15,7 +15,7 @@
             <input class="form-control" id="title" name="title" placeholder="Title" type="text">
         </div>
 
-        <select class="form-select" name="type_id">
+        <select class="form-select mb-3" name="type_id">
             <option selected>Select type</option>
             @foreach($types as $type)
                 <option value="{{ $type->id }}">{{ $type->name }}</option>
