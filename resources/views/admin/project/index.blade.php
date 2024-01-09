@@ -22,11 +22,11 @@
 
                             <div class="d-flex gap-2">
                                 <a href="{{ route('admin.projects.edit' , $project->id) }}" class="btn btn-primary">Edit</a>
-                            <form  action="{{route('admin.projects.destroy', $project->id)}}" method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <button class="btn btn-danger">Delete</button>
-                            </form> 
+                                <form  action="{{route('admin.projects.destroy', $project->id)}}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button class="btn btn-danger">Delete</button>
+                                </form> 
                             </div>
                             
                         </div>

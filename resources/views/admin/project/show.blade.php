@@ -9,7 +9,15 @@
                 </div>
                 <div class="col-8">
                     <h2>{{ $project->title }}</h2>
-                <p>{{ $project->description }}</p>
+                    <p>{{ $project->description }}</p>
+                    <div class="d-flex gap-2">
+                        <a href="{{ route('admin.projects.edit' , $project->id) }}" class="btn btn-primary">Edit</a>
+                        <form  action="{{route('admin.projects.destroy', $project->id)}}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button class="btn btn-danger">Delete</button>
+                        </form> 
+                    </div>
                 </div>
             </div>
         </div>
