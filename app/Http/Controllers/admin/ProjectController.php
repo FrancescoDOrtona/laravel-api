@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Project;
+use App\Models\Technology;
 use App\Models\Type;
 use Illuminate\Http\Request;
 
@@ -24,7 +25,8 @@ class ProjectController extends Controller
     public function create()
     {
         $types = Type::all();
-        return view('admin.project.create', compact("types"));
+        $technologies = Technology::all();
+        return view('admin.project.create', compact("types" , "technologies"));
     }
 
     /**
@@ -36,12 +38,14 @@ class ProjectController extends Controller
             'img' => 'required|max:255|string',
             'title' => 'required|min:3|string',
             'type_id' => 'nullable|exists:types,id',
+            'technology_id' => 'nullable|exists:technologies,id',
             'description' => 'required|min:5|max:400|string'
         ]);
 
         $data = $request->all();
 
         $new_project = Project::create($data);
+        $new_project->technologies()->sync($request->input('technologies', []));
 
         return redirect()->route('admin.projects.show', $new_project);
     }
@@ -61,8 +65,9 @@ class ProjectController extends Controller
     public function edit($id)
     {
         $types = Type::all();
+        $technologies = Technology::all();
         $project = Project::findOrFail($id);
-        return view('admin.project.edit', compact('project', 'types'));
+        return view('admin.project.edit', compact('project', 'types', 'technologies'));
     }
 
     /**
@@ -74,6 +79,7 @@ class ProjectController extends Controller
             'img' => 'required|string|max:255',
             'title' => 'required|string|max:255',
             'type_id' => 'nullable|exists:types,id',
+            'technology_id' => 'nullable|exists:technologies,id',
             'description' => 'required|string|min:5|max:400',
         ]);
 

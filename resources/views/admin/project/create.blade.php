@@ -24,6 +24,16 @@
                 @endforeach
             </select>
         </div>
+
+        <div class="mb-3">
+            <select name="technologies[]" multiple>
+                @foreach($technologies as $technology)
+                    <option value="{{ $technology->id }}" {{ in_array($technology->id, $project->technologies->pluck('id')->toArray()) ? 'selected' : '' }}>
+                        {{ $technology->name }}
+                    </option>
+                @endforeach
+            </select>
+        </div>
     
         <div class="mb-3">
             <label for="description" class="form-label">Description</label>

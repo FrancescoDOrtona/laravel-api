@@ -14,6 +14,7 @@ class Project extends Model
         'title',
         'description',
         'type_id',
+        'technology_id'
     ];
 
     public function type() {

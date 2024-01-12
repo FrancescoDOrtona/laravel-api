@@ -14,6 +14,9 @@
                     @else
                         <p>Type: -</p>
                     @endif
+                    @foreach($project->technologies as $technology)
+                    <p>{{ $technology->name }}</p>
+                    @endforeach
                     <p>{{ $project->description }}</p>
                     <div class="d-flex gap-2">
                         <a href="{{ route('admin.projects.edit' , $project->id) }}" class="btn btn-primary">Edit</a>
