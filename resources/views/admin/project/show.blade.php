@@ -12,7 +12,7 @@
                     @if($project->type)
                         <p>{{ $project->type->name }}</p>
                     @else
-                        <p>-</p>
+                        <p>Type: -</p>
                     @endif
                     <p>{{ $project->description }}</p>
                     <div class="d-flex gap-2">

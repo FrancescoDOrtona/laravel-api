@@ -21,7 +21,7 @@
                             @if($project->type)
                             <p>Type: {{ $project->type->name }}</p>
                             @else
-                                <p>-</p>
+                                <p>Type: -</p>
                             @endif
                             <p class="card-text">{{ $project->description }}</p>
 

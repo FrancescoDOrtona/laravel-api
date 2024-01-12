@@ -43,7 +43,7 @@ class ProjectController extends Controller
 
         $new_project = Project::create($data);
 
-        return redirect()->route('admin.projects.show', $new_project->id);
+        return redirect()->route('admin.projects.show', $new_project);
     }
 
     /**
