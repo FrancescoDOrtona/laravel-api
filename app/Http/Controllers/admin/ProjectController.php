@@ -34,15 +34,13 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+        $data = $request->validate([
             'img' => 'required|max:255|string',
             'title' => 'required|min:3|string',
             'type_id' => 'nullable|exists:types,id',
-            'technology_id' => 'nullable|exists:technologies,id',
+            'technologies' => 'nullable|exists:technologies,id',
             'description' => 'required|min:5|max:400|string'
         ]);
-
-        $data = $request->all();
 
         $new_project = Project::create($data);
         $new_project->technologies()->sync($request->input('technologies', []));

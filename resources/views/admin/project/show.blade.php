@@ -14,9 +14,13 @@
                     @else
                         <p>Type: -</p>
                     @endif
-                    @foreach($project->technologies as $technology)
-                    <p>{{ $technology->name }}</p>
-                    @endforeach
+
+                    @forelse($project->technologies as $technology)
+                        <p>Technology: {{ $technology->name }}</p>
+                    @empty
+                        <p>Technology: -</p>
+                    @endforelse
+
                     <p>{{ $project->description }}</p>
                     <div class="d-flex gap-2">
                         <a href="{{ route('admin.projects.edit' , $project->id) }}" class="btn btn-primary">Edit</a>

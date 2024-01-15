@@ -20,9 +20,6 @@ class ProjectSeeder extends Seeder
         $types = Type::all();
         $ids = $types->pluck('id');
 
-        $technologies = Technology::all();
-        $techIds = $technologies->pluck('id');
-
         for ($i = 0; $i < 10; $i++) {
 
             $new_project = new Project;
@@ -31,7 +28,6 @@ class ProjectSeeder extends Seeder
             $new_project->title = $faker->sentence(5);
             $new_project->description = $faker->text();
             $new_project->type_id = $faker->optional()->randomElement($ids);
-            $new_project->technology_id = $faker->optional()->randomElement($techIds);
             $new_project->save();
 
         }
