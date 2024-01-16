@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Project;
 use App\Models\Technology;
 use App\Models\Type;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
 class ProjectController extends Controller
@@ -41,7 +42,7 @@ class ProjectController extends Controller
             'technologies' => 'nullable|exists:technologies,id',
             'description' => 'required|min:5|max:400|string'
         ]);
-
+        $data['slug'] = Str::slug($data['title'], '-');
         $new_project = Project::create($data);
         $new_project->technologies()->sync($request->input('technologies', []));
 
@@ -80,7 +81,7 @@ class ProjectController extends Controller
             'technology_id' => 'nullable|exists:technologies,id',
             'description' => 'required|string|min:5|max:400',
         ]);
-
+        $validatedData['slug'] = Str::slug($validatedData['title'], '-');
         $project = Project::findOrFail($id);
         $project->update($validatedData);
 
