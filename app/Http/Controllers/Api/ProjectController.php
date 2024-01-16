@@ -15,4 +15,11 @@ class ProjectController extends Controller
             'success' => true
         ]);
     }
+
+    public function show( Project $project){
+        $project->load('type');
+        return response()->json([
+            'project' => $project
+        ]);
+    }
 }
