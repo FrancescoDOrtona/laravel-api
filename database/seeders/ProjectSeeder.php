@@ -21,7 +21,7 @@ class ProjectSeeder extends Seeder
         $types = Type::all();
         $ids = $types->pluck('id');
 
-        for ($i = 0; $i < 10; $i++) {
+        for ($i = 0; $i < 100; $i++) {
 
             $new_project = new Project;
 
